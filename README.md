@@ -29,7 +29,6 @@ Define los campos que se guardan en la base de datos:
 - `monto`: *Number*, entre 1.000.000 y 20.000.000.
 - `tasa`: *Number*, calculada automáticamente (entre 0.01% y 40% anual).
 - `plazo`: *Number*, entre 6 y 120 meses.
-- `ingresos`: *Number*, requerido.
 - `edad`: *Number*, entre 18 y 65 años.
 - `ciudad`: *String*, debe estar en la lista de ciudades válidas.
 - `cuota`: *Number*, cuota mensual calculada.
@@ -68,9 +67,11 @@ Valida los datos del cuerpo (`req.body`) y llama a la función `simular` del mod
 
 - Verifica que:
   - El nombre sea válido.
+  - El email sea válido.
+  - El telefono sea válido.
+  - La direccion sea válida.
   - El monto esté dentro del rango permitido.
   - El plazo esté dentro del rango.
-  - Los ingresos y la edad sean números válidos.
   - La ciudad esté definida.
   - El abono a capital (opcional) sea un número positivo o cero.
 
@@ -88,22 +89,37 @@ Devuelve todas las simulaciones almacenadas en orden descendente por fecha.
 
 ```json
 {
-  "nombre": "María",
-  "monto": 10000000,
-  "tasa": 15.23,
-  "plazo": 60,
-  "cuota": 237500,
-  "totalPagar": 14250000,
-  "interesTotal": 4250000,
-  "amortizacion": [
-    {
-      "cuota": 1,
-      "saldoInicial": 10000000,
-      "interes": 12700,
-      "cuotaFija": 237500,
-      "saldoFinal": 9872700
-    },
-    ...
-  ],
-  "fecha": "2025-06-09T18:43:00.000Z"
+    "nombre": "Brayan",
+    "email": "brayan@gmail.com",
+    "telefono": "3001234567",
+    "direccion": "Calle 123 #45-67",
+    "monto": 10000000,
+    "tasa": 13.9,
+    "plazo": 24,
+    "edad": 30,
+    "ciudad": "Bogotá",
+    "cuota": 479656.55,
+    "totalPagar": 11511757.2,
+    "interesTotal": 1511757.2,
+    "amortizacion": [
+        {
+            "cuota": 1,
+            "saldoInicial": 10000000,
+            "interes": 115833.33,
+            "cuotaFija": 479656.55,
+            "saldoFinal": 9636176.78
+        },
+        {
+            "cuota": 2,
+            "saldoInicial": 9636176.78,
+            "interes": 111619.05,
+            "cuotaFija": 479656.55,
+            "saldoFinal": 9268139.28
+        },
+        ...
+    ],
+    "fechaSimulacion": "17/06/2025 16:14:34",
+    "fecha": "2025-06-17T21:14:34.855Z",
+    "_id": "6851daba85de9690f2032494",
+    "__v": 0
 }
