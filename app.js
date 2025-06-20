@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const config = require('./config.js').config;
 const rutas = require('./routes.js');
+const simulacionGraficosRoutes = require('./src/routes/simulacionGraficosRoutes.js');
 
 dotenv.config();
 
@@ -25,6 +26,10 @@ app.use(cors({
 
 app.use(express.json()); // Solo este para JSON
 app.use('/', rutas);
+app.use('/api/graficos', simulacionGraficosRoutes);
+
+
+// Conexión a la base de datos MongoDB
 
 mongoose.connect('mongodb://127.0.0.1:27017/' + config.db)
     .then(() => {
