@@ -1,19 +1,11 @@
-const { porcentajePorMeses, porcentajePorMesesConDesglose } = require('../services/simulacionGraficos');
+const { interesPorMesSimulacion } = require('../services/simulacionGraficos');
 
-exports.getPorcentajePorMeses = async (req, res) => {
+exports.getInteresPorMesSimulacion = async (req, res) => {
     try {
-        const data = await porcentajePorMeses();
+        const { id } = req.params;
+        const data = await interesPorMesSimulacion(id);
         res.json(data);
     } catch (error) {
-        res.status(500).json({ error: 'Error al obtener el porcentaje por meses' });
-    }
-};
-
-exports.getPorcentajePorMesesConDesglose = async (req, res) => {
-    try {
-        const data = await porcentajePorMesesConDesglose();
-        res.json(data);
-    } catch (error) {
-        res.status(500).json({ error: 'Error al obtener el desglose por meses' });
+        res.status(500).json({ error: 'Error al obtener el interés por mes de la simulación' });
     }
 };

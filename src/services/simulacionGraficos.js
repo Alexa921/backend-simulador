@@ -1,62 +1,33 @@
-const { obtenerSimulaciones } = require('../models/simuladorModel');
+const { Simulacion } = require('../models/simuladorModel');
 
-async function porcentajePorMeses() {
-    const simulaciones = await obtenerSimulaciones();
-    // Agrupa por mes y suma los valores
-    const datosPorMes = {};
+const MESES = [
+    'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
+    'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'
+];
 
-    simulaciones.forEach(sim => {
-        // Extrae el mes en formato YYYY-MM de la fechaSimulacion
-        const mes = sim.fechaSimulacion ? sim.fechaSimulacion.slice(6, 10) + '-' + sim.fechaSimulacion.slice(3, 5) : '';
-        if (!mes) return;
+async function interesPorMesSimulacion(simulacionId) {
+    const sim = await Simulacion.findById(simulacionId).exec();
+    if (!sim || !Array.isArray(sim.amortizacion)) return [];
 
-        if (!datosPorMes[mes]) {
-            datosPorMes[mes] = { total: 0, impuestos: 0, count: 0 };
+    // Obtener el mes de inicio desde la fechaSimulacion (formato esperado: DD/MM/YYYY)
+    let mesInicio = 0;
+    if (sim.fechaSimulacion) {
+        const partes = sim.fechaSimulacion.split('/');
+        if (partes.length === 3) {
+            mesInicio = parseInt(partes[1], 10) - 1; // 0-indexed
         }
-        // Suma totalPagar como total y calcula un valor de impuestos si existe
-        datosPorMes[mes].total += sim.totalPagar || 0;
-        datosPorMes[mes].impuestos += sim.impuestos || 0;
-        datosPorMes[mes].count += 1;
+    }
+
+    return sim.amortizacion.map((cuota, idx) => {
+        // Calcula el mes correspondiente, haciendo el ciclo de 0 a 11
+        const mesIdx = (mesInicio + idx) % 12;
+        return {
+            mes: MESES[mesIdx],
+            interes: Number((cuota.interes || 0).toFixed(2))
+        };
     });
-
-    // Devuelve el porcentaje de impuestos por mes
-    return Object.entries(datosPorMes).map(([mes, datos]) => ({
-        mes,
-        porcentajeImpuestos: datos.total > 0 ? (datos.impuestos / datos.total) * 100 : 0
-    }));
-}
-
-async function porcentajePorMesesConDesglose() {
-    const simulaciones = await obtenerSimulaciones();
-    const datosPorMes = {};
-
-    simulaciones.forEach(sim => {
-        const mes = sim.fechaSimulacion ? sim.fechaSimulacion.slice(6, 10) + '-' + sim.fechaSimulacion.slice(3, 5) : '';
-        if (!mes) return;
-
-        if (!datosPorMes[mes]) {
-            datosPorMes[mes] = { total: 0, ingresos: 0, gastos: 0, ahorro: 0, impuestos: 0, count: 0 };
-        }
-        datosPorMes[mes].total += sim.totalPagar || 0;
-        datosPorMes[mes].ingresos += sim.ingresos || 0;
-        datosPorMes[mes].gastos += sim.gastos || 0;
-        datosPorMes[mes].ahorro += sim.ahorro || 0;
-        datosPorMes[mes].impuestos += sim.impuestos || 0;
-        datosPorMes[mes].count += 1;
-    });
-
-    return Object.entries(datosPorMes).map(([mes, datos]) => ({
-        mes,
-        porcentaje: {
-            ingresos: datos.total > 0 ? (datos.ingresos / datos.total) * 100 : 0,
-            gastos: datos.total > 0 ? (datos.gastos / datos.total) * 100 : 0,
-            ahorro: datos.total > 0 ? (datos.ahorro / datos.total) * 100 : 0,
-            impuestos: datos.total > 0 ? (datos.impuestos / datos.total) * 100 : 0
-        }
-    }));
 }
 
 module.exports = {
-    porcentajePorMeses,
-    porcentajePorMesesConDesglose
+    interesPorMesSimulacion,
 };
