@@ -1,0 +1,13 @@
+:root {
+  /* Colores */
+  --color-primario: #041361;
+  --color-secundario: #21b9d9;
+  --color-triangulo: #a7f0ff;
+  --color-titulos: #000000;
+  --color-texto: #a0a3a3;
+
+  /* Tipografías */
+  --font-titulos: 'Montserrat', sans-serif;
+  --font-body: 'Open Sans', sans-serif;
+}
+

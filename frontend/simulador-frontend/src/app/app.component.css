@@ -1,0 +1,43 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/*HEADER*/
+.header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    color: var(--color-primario);
+    font-family: var(--font-titulos);
+    font-weight: bolder;
+    font-size: 14px;
+}
+
+.logo {
+    font-family: var(--font-titulos);
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.menu {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-left: 40px;
+    margin-top: 28px;
+}
+
+.menu span {
+    cursor: default;
+    padding-left: 10px;
+}
+
+.link-simulador {
+    color: var(--color-secundario);
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
