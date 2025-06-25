@@ -1,1 +1,35 @@
-<p>resultados works!</p>
+<div class="contenedor-pagina-resultados">
+
+  <!-- Contenedor principal de los datos del usuario -->
+  <div class="contenedor-datos-principal">
+    <div class="tarjeta-datos-usuario">
+      <h2>Resumen de tu Simulación</h2>
+      <hr>
+      <p><strong>Nombre:</strong> <span class="texto-datos-usuario"> {{ resultado.nombre }} </span></p>
+      <p><strong>Número de identificación:</strong> <span class="texto-datos-usuario"> {{ resultado.identificacion }} </span></p>
+      <p><strong>Correo electrónico:</strong> <span class="texto-datos-usuario"> {{ resultado.email }} </span></p>
+      <p><strong>Teléfono:</strong> <span class="texto-datos-usuario"> {{ resultado.telefono }} </span></p>
+      <p><strong>Dirección de residencia:</strong> <span class="texto-datos-usuario"> {{ resultado.direccion }} </span></p>
+      <p><strong>Fecha de nacimiento:</strong> <span class="texto-datos-usuario"> {{ resultado.fechaNacimiento }} </span></p>
+
+       <button class="boton-nueva-simulacion" (click)="simularOtro()">Simular con otros valores</button>
+    </div>
+  </div>
+
+  <!-- Contenedor lateral derecho con las tarjetas -->
+  <div class="contenedor-tarjetas-derecha">
+    <div class="tarjeta-lateral">
+      <span class="titulo-lateral">CRÉDITO DE:</span>
+      <span class="valor-lateral">${{ resultado.monto | number }}</span>
+    </div>
+    <div class="tarjeta-lateral">
+      <span class="titulo-lateral">CUOTAS DE:</span>
+      <span class="valor-lateral">${{ resultado.cuota | number }}</span>
+    </div>
+    <div class="tarjeta-lateral">
+      <span class="titulo-lateral">PLAZO:</span>
+      <span class="valor-lateral">{{ resultado.plazo }} meses</span>
+    </div>
+  </div>
+
+</div>

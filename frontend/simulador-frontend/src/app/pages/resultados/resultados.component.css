@@ -1,0 +1,148 @@
+.resultados-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    border: 1px solid var(--color-texto);
+    border-radius: 10px;
+    padding: 2rem;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: var(--font-body);
+}
+
+.resultado-titulo {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-titulos);
+    color: var(--color-titulos);
+}
+
+.resultado-titulo img {
+    width: 20px;
+    height: 20px;
+}
+
+.monto-solicitado {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-family: var(--font-titulos);
+    color: var(--color-titulos);
+}
+
+.texto-cuota {
+    color: var(--color-texto);
+    margin-bottom: 0.5rem;
+    font-family: var(--font-body);
+}
+
+.cuota-valor {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: var(--color-titulos);
+    font-family: var(--font-titulos);
+}
+
+.datos-extra {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+    color: var(--color-texto);
+}
+
+
+/* Contenedores derecha */
+
+.contenedor-pagina-resultados {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.contenedor-datos-principal {
+    margin-top: 40px;
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+    height: 600px;
+    background-color: rgb(240, 240, 240);
+}
+
+.tarjeta-datos-usuario h2 {
+    font-size: 26px;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-top: 10px;
+    font-family: var(--font-titulos);
+    color: var(--color-titulos);
+}
+
+.contenedor-tarjetas-derecha {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.tarjeta-lateral {
+    margin-top: 40px;
+    background-color: rgb(240, 240, 240);
+    padding: 20px 30px;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 200px;
+    min-height: 100px;
+}
+
+.titulo-lateral {
+    font-size: 17px;
+    color: var(--color-titulos);
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    font-family: var(--font-body);
+    font-weight: 400;
+}
+
+.valor-lateral {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--color-primario);
+    font-family: var(--font-titulos);
+}
+
+p {
+    color: var(--color-titulos);
+    font-family: var(--font-body);
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-left: 20px;
+}
+
+.texto-datos-usuario {
+    color: var(--color-titulos);
+    margin-left: 10px;
+}
+
+
+.boton-nueva-simulacion {
+    margin-top: 30px;
+    width: 100%;
+    background-color: var(--color-secundario);
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--font-titulos);
+    font-weight: bold;
+    font-size: 18px;
+}
+
