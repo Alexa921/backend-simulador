@@ -3,17 +3,20 @@ const simuladorModel = require('../models/simuladorModel.js');
 const simuladorController = {};
 
 simuladorController.simular = async function (req, res) {
-    const { nombre, email, telefono, direccion, monto, plazo, ingresos, edad, ciudad, abonoCapital } = req.body;
+    const { nombre, identificacion, email, telefono, direccion, monto, plazo, fechaNacimiento } = req.body;
 
     // Validaciones
     if (!nombre || typeof nombre !== 'string' || nombre.trim() === '') {
         return res.status(400).json({ error: 'El campo nombre es obligatorio.' });
     }
+    if (!identificacion || typeof identificacion !== 'string' || identificacion.trim() === '') {
+        return res.status(400).json({ error: 'El campo identificación es obligatorio.' });
+    }
     if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         return res.status(400).json({ error: 'El campo email es obligatorio y debe ser válido.' });
     }
-    if (!telefono || typeof telefono !== 'string' || !/^\d{10}$/.test(telefono)) {
-        return res.status(400).json({ error: 'El campo teléfono es obligatorio y debe tener 10 dígitos.' });
+    if (!telefono || typeof telefono !== 'string' || !/^\d{7,15}$/.test(telefono)) {
+        return res.status(400).json({ error: 'El campo teléfono es obligatorio y debe tener entre 7 y 15 dígitos.' });
     }
     if (!direccion || typeof direccion !== 'string' || direccion.trim() === '') {
         return res.status(400).json({ error: 'El campo dirección es obligatorio.' });
@@ -21,31 +24,23 @@ simuladorController.simular = async function (req, res) {
     if (monto === undefined || typeof monto !== 'number' || monto < 1000000 || monto > 20000000) {
         return res.status(400).json({ error: 'El monto debe estar entre 1.000.000 y 20.000.000.' });
     }
-    if (plazo === undefined || typeof plazo !== 'number' || plazo < 6 || plazo > 120) {
-        return res.status(400).json({ error: 'El plazo debe estar entre 6 y 120 meses.' });
+    if (plazo === undefined || typeof plazo !== 'number' || ![48, 64, 84].includes(plazo)) {
+        return res.status(400).json({ error: 'El plazo debe ser 48, 64 o 84 meses.' });
     }
-    if (edad === undefined || typeof edad !== 'number' || edad < 18 || edad > 65) {
-        return res.status(400).json({ error: 'La edad debe estar entre 18 y 65 años.' });
-    }
-    if (!ciudad || typeof ciudad !== 'string' || ciudad.trim() === '') {
-        return res.status(400).json({ error: 'El campo ciudad es obligatorio.' });
-    }
-    if (abonoCapital !== undefined && (typeof abonoCapital !== 'number' || abonoCapital < 0)) {
-        return res.status(400).json({ error: 'El abono de capital debe ser un número positivo o cero.' });
+    if (!fechaNacimiento || typeof fechaNacimiento !== 'string') {
+        return res.status(400).json({ error: 'El campo fecha de nacimiento es obligatorio.' });
     }
 
     try {
         const simulacion = await simuladorModel.simular({
             nombre,
+            identificacion,
             email,
             telefono,
             direccion,
             monto,
             plazo,
-            ingresos,
-            edad,
-            ciudad,
-            abonoCapital: abonoCapital || 0
+            fechaNacimiento
         });
         res.status(201).json(simulacion);
     } catch (error) {
@@ -63,5 +58,3 @@ simuladorController.obtenerSimulaciones = async function (req, res) {
 };
 
 module.exports = { simuladorController };
-
-
