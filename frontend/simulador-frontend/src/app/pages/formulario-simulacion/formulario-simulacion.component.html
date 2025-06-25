@@ -1,1 +1,82 @@
-<p>formulario-simulacion works!</p>
+<section class="formulario-simulacion-container">
+  
+<div class="contenedor-simulacion">
+
+  <!-- Sección Datos Personales -->
+  <div class="seccion">
+    <h2>Datos personales</h2>
+    <div class="fila">
+      <div class="campo">
+        <label>Nombre completo</label>
+        <input type="text" [(ngModel)]="simulacion.nombre">
+      </div>
+      <div class="campo">
+        <label>Número de identificación</label>
+        <input type="text" [(ngModel)]="simulacion.identificacion">
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección Información de contacto -->
+  <div class="seccion">
+    <h2>Información de contacto</h2>
+    <div class="campo">
+      <label>Correo electrónico</label>
+      <input type="email" [(ngModel)]="simulacion.email">
+    </div>
+    <div class="fila">
+      <div class="campo">
+        <label>Número de teléfono</label>
+        <input type="text" [(ngModel)]="simulacion.telefono">
+      </div>
+      <div class="campo">
+        <label>Dirección de residencia</label>
+        <input type="text" [(ngModel)]="simulacion.direccion">
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección Simulador de crédito -->
+  <div class="seccion">
+    <h2>Simulador de crédito</h2>
+
+    <div class="campo">
+  <label>Monto solicitado</label>
+  <div class="campo-con-simbolo">
+    <span class="simbolo-peso">$</span>
+    <input type="number" [(ngModel)]="simulacion.monto">
+  </div>
+</div>
+
+<div class="subtexto-monto">Monto Minimo: 1.000.000- Monto Maximo: 20.000.000</div>
+
+
+   <div class="fila">
+  <div class="campo">
+    <label>¿A cuántos meses?</label>
+    <select [(ngModel)]="simulacion.plazo">
+      <option value="48">48 meses</option>
+      <option value="64">64 meses</option>
+      <option value="84">84 meses</option>
+    </select>
+    <div class="subtexto">Elige un plazo entre 48 y 84 meses</div>
+  </div>
+
+  <div class="campo">
+    <label>Fecha de nacimiento</label>
+    <input type="date" [(ngModel)]="simulacion.fechaNacimiento">
+    <div class="subtexto">Debes tener entre 18 y 65 años para solicitar el crédito</div>
+  </div>
+</div>
+
+  </div>
+
+  <!-- Botón -->
+  <div class="botones-container">
+    <button class="boton-simular" (click)="guardarSimulacion()">SIMULAR</button>
+  </div>
+
+</div>
+
+</section>
+
