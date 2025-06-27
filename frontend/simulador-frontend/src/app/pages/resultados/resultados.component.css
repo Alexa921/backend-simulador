@@ -56,7 +56,6 @@
     color: var(--color-texto);
 }
 
-
 /* Contenedores derecha */
 
 .contenedor-pagina-resultados {
@@ -69,11 +68,13 @@
 
 .contenedor-datos-principal {
     margin-top: 40px;
+    margin-left: -600px;
     padding: 30px;
     border-radius: 10px;
     width: 400px;
     height: 500px;
     background-color: rgb(240, 240, 240);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .tarjeta-datos-usuario h2 {
@@ -85,20 +86,21 @@
     color: var(--color-titulos);
 }
 
-.contenedor-tarjetas-derecha {
+.contenedor-tarjetas-centro {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 20px;
 }
 
 .tarjeta-lateral {
     margin-top: 40px;
     background-color: rgb(240, 240, 240);
-    padding: 20px 30px;
+    padding: 24px 30px;
     border-radius: 10px;
     text-align: center;
     min-width: 200px;
     min-height: 100px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .titulo-lateral {
@@ -148,71 +150,124 @@ p {
 
 /* Diagrama impuestos */
 
-.contenedor-tarjetas-derecha {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
 .contenedor-diagrama {
-    margin-top: -360px;
-    margin-left: 780px;
+    margin-top: -560px;
+    margin-left: 1070px;
     background-color: #f2f2f2;
     padding: 20px;
     border-radius: 10px;
-    max-width: 780px;
-    height: 320px;
+    width: 400px; 
+    height: 520px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+
 .titulo-diagrama {
-  font-family: var(--font-titulos);
-  color: var(--color-titulos);
-  margin-top: 8px;
-  margin-bottom: 36px;
-  font-size: 18px;
+    font-family: var(--font-titulos);
+    color: var(--color-titulos);
+    margin-top: 15px;
+    margin-bottom: 95px;
+    font-size: 22px;
 }
 
 .grafico-diagrama {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  height: 200px;
-  background-color: #f2f2f2;
-  padding: 10px;
-  border-radius: 5px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 200px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .barra {
-  width: 20px;
-  background-color: var(--color-primario);
-  border-radius: 4px;
+    width: 20px;
+    background-color: var(--color-primario);
+    border-radius: 4px;
 }
 
 .meses-diagrama {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 18px;
-  font-size: 0.8rem;
-  color: var(--color-texto);
-  padding-left: 35px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 18px;
+    font-size: 0.8rem;
+    color: var(--color-texto);
+    padding-left: 35px;
 }
 
 .diagrama-contenido {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
 }
 
 .porcentajes-laterales {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 200px;
-  font-size: 0.8rem;
-  color: var(--color-texto);
-  margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    font-size: 0.8rem;
+    color: var(--color-texto);
+    margin-top: 10px;
 }
 
+
+/* RESPONSIVE */
+/* RESPONSIVE TABLET */
+@media (max-width: 992px) {
+    .contenedor-pagina-resultados {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .contenedor-datos-principal {
+        width: 90%;
+        margin-left: 10px;
+    }
+
+    .contenedor-diagrama {
+        width: 90%;
+        margin-top: 70px;
+        margin-left: 30px;
+    }
+
+    .contenedor-tarjetas-centro {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-left: 10px;
+    }
+}
+
+/* RESPONSIVE MÓVIL */
+@media (max-width: 576px) {
+   .contenedor-pagina-resultados {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .contenedor-datos-principal {
+        width: 90%;
+        margin-left: 20px;
+    }
+
+    .contenedor-diagrama {
+        width: 90%;
+        margin-top: 70px;
+        margin-left: 0px;
+    }
+
+    .contenedor-tarjetas-centro {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-left: 10px;
+    }
+}
 
 

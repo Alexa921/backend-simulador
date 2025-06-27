@@ -25,20 +25,20 @@
 }
 
 h1 {
-  font-family: var(--font-titulos);
-  color: var(--color-titulos);
-  font-size: 52px;
-  margin-left: 330px;
-  margin-top: 80px;
+    font-family: var(--font-titulos);
+    color: var(--color-titulos);
+    font-size: 52px;
+    margin-left: 330px;
+    margin-top: 80px;
 }
 
 .texto-principal {
-  font-size: 16px;
-  margin-top: 50px;
-  margin-left: 330px;
-  color: var(--color-texto);
-  font-family: var(--font-titulos);
-  line-height: 24px;
+    font-size: 16px;
+    margin-top: 50px;
+    margin-left: 330px;
+    color: var(--color-texto);
+    font-family: var(--font-titulos);
+    line-height: 24px;
 }
 
 .imagen-portada {
@@ -55,4 +55,112 @@ footer {
     height: 150px;
     background-color: var(--color-primario);
     margin-top: 91px;
+}
+
+/*RESPONSIVE*/
+/* Responsive para tablets */
+@media (max-width: 992px) {
+
+    .contenedor-principal {
+        width: 95%;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .triangulo-rombo {
+        margin-top: 150px;
+        margin-left: 20px;
+    }
+
+    .texto-triangulo {
+        margin-top: -30px;
+        margin-left: 70px;
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 45px;
+        margin-left: 20px;
+        margin-top: 70px;
+        max-width: 80%;
+        line-height: 1.2;
+    }
+
+    .texto-principal {
+        font-size: 15px;
+        margin-top: 15px;
+        margin-left: 20px;
+        max-width: 85%;
+        line-height: 1.5;
+    }
+
+    .imagen-portada {
+        width: 300px;
+        height: auto;
+        margin-top: -200px;
+        margin-left: 600px;
+    }
+
+    footer {
+        margin-top: 208px;
+        height: 120px;
+    }
+}
+
+/*Responsive Celulares*/
+@media (max-width: 600px) {
+    .contenedor-principal {
+        width: 95%;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .triangulo-rombo {
+        margin-top: 50px;
+        margin-left: 20px;
+    }
+
+    .texto-triangulo {
+        margin-top: -30px;
+        margin-left: 70px;
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 35px;
+        margin-left: 20px;
+        margin-top: 60px;
+        max-width: 80%;
+        line-height: 1.2;
+    }
+
+    .texto-principal {
+        font-size: 12px;
+        margin-top: 15px;
+        margin-left: 20px;
+        max-width: 85%;
+        line-height: 1.5;
+    }
+
+    .imagen-portada {
+        width: 350px;
+        height: auto;
+        margin-top: 50px;
+        margin-left: 70px;
+    }
+
+    footer {
+        margin-top: 74px;
+        height: 90px;
+    }
 }

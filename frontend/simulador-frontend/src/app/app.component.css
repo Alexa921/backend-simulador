@@ -41,3 +41,52 @@
     border-radius: 6px;
     cursor: pointer;
 }
+
+/* RESPONSIVE */
+/* RESPONSIVE TABLET */
+@media (max-width: 992px) {
+    .header {
+        padding: 0 15px;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .menu {
+        gap: 1rem;
+    }
+
+    .link-simulador {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* RESPONSIVE MÓVIL */
+@media (max-width: 576px) {
+    .header {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+        align-items: flex-start;
+    }
+
+    .logo {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .link-simulador {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.9rem;
+    }
+}
+

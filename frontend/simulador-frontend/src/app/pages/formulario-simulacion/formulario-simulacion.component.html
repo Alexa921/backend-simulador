@@ -44,30 +44,43 @@
   <label>Monto solicitado</label>
   <div class="campo-con-simbolo">
     <span class="simbolo-peso">$</span>
-    <input type="number" [(ngModel)]="simulacion.monto">
+    <input type="text"
+           [value]="formatearPesos(simulacion.monto)"
+           (input)="actualizarMonto($event)">
   </div>
 </div>
 
-<div class="subtexto-monto">Monto Minimo: 1.000.000- Monto Maximo: 20.000.000</div>
 
+    <div class="subtexto-monto">Monto mínimo: 1.000.000 - Monto máximo: 20.000.000</div>
 
-   <div class="fila">
-  <div class="campo">
-    <label>¿A cuántos meses?</label>
-    <select [(ngModel)]="simulacion.plazo">
-      <option value="48">48 meses</option>
-      <option value="64">64 meses</option>
-      <option value="84">84 meses</option>
-    </select>
-    <div class="subtexto">Elige un plazo entre 48 y 84 meses</div>
-  </div>
+    <div class="fila">
+      <div class="campo">
+        <label>¿A cuántos meses?</label>
+        <select [(ngModel)]="simulacion.plazo">
+          <option value="48">48 meses</option>
+          <option value="64">64 meses</option>
+          <option value="84">84 meses</option>
+        </select>
+        <div class="subtexto">Elige un plazo entre 48 y 84 meses</div>
+      </div>
 
-  <div class="campo">
-    <label>Fecha de nacimiento</label>
-    <input type="date" [(ngModel)]="simulacion.fechaNacimiento">
-    <div class="subtexto">Debes tener entre 18 y 65 años para solicitar el crédito</div>
-  </div>
-</div>
+      <div class="campo">
+        <label>Tasa de interés</label>
+        <select [(ngModel)]="simulacion.tasa">
+          <option value="5">5%</option>
+          <option value="10">10%</option>
+          <option value="20">20%</option>
+          <option value="30">30%</option>
+        </select>
+        <div class="subtexto">Selecciona la tasa de interés</div>
+      </div>
+
+      <div class="campo">
+        <label>Fecha de nacimiento</label>
+        <input type="date" [(ngModel)]="simulacion.fechaNacimiento">
+        <div class="subtexto">Debes tener entre 18 y 65 años para solicitar el crédito</div>
+      </div>
+    </div>
 
   </div>
 
@@ -79,4 +92,3 @@
 </div>
 
 </section>
-

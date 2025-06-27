@@ -12,12 +12,12 @@
       <p><strong>Dirección de residencia:</strong> <span class="texto-datos-usuario"> {{ resultado.direccion }} </span></p>
       <p><strong>Fecha de nacimiento:</strong> <span class="texto-datos-usuario"> {{ resultado.fechaNacimiento }} </span></p>
 
-       <button class="boton-nueva-simulacion" (click)="simularOtro()">Simular con otros valores</button>
+      <button class="boton-nueva-simulacion" (click)="simularOtro()">Simular con otros valores</button>
     </div>
   </div>
 
   <!-- Contenedor lateral derecho con las tarjetas -->
-  <div class="contenedor-tarjetas-derecha">
+  <div class="contenedor-tarjetas-centro">
     <div class="tarjeta-lateral">
       <span class="titulo-lateral">CRÉDITO DE:</span>
       <span class="valor-lateral">${{ resultado.monto | number }}</span>
@@ -40,39 +40,12 @@
   
   <div class="diagrama-contenido">
     
-    <!-- Lado izquierdo con porcentajes -->
-    <div class="porcentajes-laterales">
-      <span>30%</span>
-      <span>20%</span>
-      <span>10%</span>
-      <span>5%</span>
-    </div>
-    
     <!-- Gráfico -->
-    <div class="grafico-diagrama">
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 0%"></div>
-      <div class="barra" style="height: 65%"></div>
+    <div class="contenedor-grafico">
+      <canvas id="graficoImpuestos"></canvas>
     </div>
-  </div>
 
-  <!-- Meses -->
-  <div class="meses-diagrama">
-    <span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span>
-    <span>Jul</span><span>Ago</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dic</span>
   </div>
 </div>
+
+
